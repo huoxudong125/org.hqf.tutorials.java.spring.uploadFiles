@@ -70,8 +70,9 @@ public class FileUploadController {
 	String uploadMultipleFileHandler(@RequestParam("name") String[] names,
 			@RequestParam("file") MultipartFile[] files) {
 
-		if (files.length != names.length)
+		if (files.length != names.length) {
 			return "Mandatory information missing";
+		}
 
 		String message = "";
 		for (int i = 0; i < files.length; i++) {
@@ -100,6 +101,7 @@ public class FileUploadController {
 
 				message = message + "You successfully uploaded file=" + name
 						+ "<br />";
+
 			} catch (Exception e) {
 				return "You failed to upload " + name + " => " + e.getMessage();
 			}
